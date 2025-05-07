@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiFetchServiceService {
+export class ApiFetchService {
 
   private baseUrl = 'http://localhost:3000';
 
@@ -14,6 +14,10 @@ export class ApiFetchServiceService {
 
   searchHeroByName(name: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/search/${name}`);
+  }
+
+  searchHeroById(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 
 }

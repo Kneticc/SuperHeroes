@@ -1,3 +1,8 @@
+
+:root {
+  background: linear-gradient(to right, #1e396b, #496a9c);
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -6,16 +11,12 @@
   height: 100%;
   width: 100%;
 
-  .img{
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
   .header {
-    font-size: 60px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 66px;
     font-family: 'Badabb';
     font-weight: 500;
     color: #f0a800;
@@ -34,7 +35,7 @@
     display: flex;
     flex-direction: column;
     box-shadow: 10px 10px rgba(0, 0, 0, 1);
-    top: 30%;
+    top: 40%;
 
     .search-container {
 

@@ -1,5 +1,4 @@
 <div class="main-container">  
-  <img src="../../assets/images/background.png" alt="Hero Image">
   <div class="header-container">
     <h1 class="header">SEARCH YOUR HERO</h1>
   </div>
@@ -8,7 +7,7 @@
       <input type="text" [(ngModel)]="searchTerm" placeholder="Search heroes" (input)="filterHeroes()" class="search-input"/>
     </div>
     <div class="heroes-list" *ngIf="heroes.length > 0">
-      <section *ngFor="let hero of heroes" class="hero-card">
+      <section *ngFor="let hero of heroes" class="hero-card" (click)="navigateToHero(hero.id)">
         <span class="hero-name">{{ hero.name }}</span>
       </section>
     </div>
