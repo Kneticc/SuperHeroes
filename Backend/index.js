@@ -16,12 +16,20 @@ const HEROES_API = 'https://superheroapi.com/api';
 
 app.get('/search/:name', async (req, res) => {
 
-  const { name } = req.params;
-  const response = await axios.get(`${HEROES_API}/${process.env.TOKEN}/search/${name}`);
+  try {
+    const { name } = req.params;
+    const response = await axios.get(`${HEROES_API}/${process.env.TOKEN}/search/${name}`);
 
-  const filteredHeroes = response.data.results.filter(hero => hero.name.toLowerCase().startsWith(name.toLowerCase()));
+    const filteredHeroes = Array.isArray(response.data.results) ?
+      response.data.results.filter(hero => hero.name.toLowerCase().startsWith(name.toLowerCase())) : [];
 
-  res.json({ results: filteredHeroes.slice(0, 10) });
+    res.json({ results: filteredHeroes.slice(0, 10) });
+  } catch (error) {
+    res.status(404).json({
+      error: 'An error occurred',
+      details: error.message
+    });
+  }
 
 });
 
@@ -32,7 +40,7 @@ app.get('/:id', async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-    res.status(500).json({
+    res.status(404).json({
       error: 'An error ocurred',
       details: error.message
     });

@@ -1,0 +1,16 @@
+<div class="hero-details-container" *ngIf="hero">
+  <div class="hero-details-poster">
+    <section class="hero-details-poster-name">
+      <h1 class="hero-name">{{ hero.name }}</h1>
+    </section>
+    <section class="hero-details-poster-image">
+      <img [src]="hero.image.url" alt="{{ hero.name }}" class="hero-image"/>
+    </section>
+    <section class="hero-details-poster-info">
+
+    </section>
+  </div>
+</div>
+<div class="hero-details-loading" *ngIf="!hero">
+  <p>Loading hero details...</p>
+</div>

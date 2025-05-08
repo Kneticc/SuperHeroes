@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiFetchService } from '../services/api-fetch.service';
+import { ApiFetchService } from '../../services/api-fetch.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

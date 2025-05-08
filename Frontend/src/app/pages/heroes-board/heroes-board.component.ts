@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiFetchService } from '../services/api-fetch.service';
+import { ApiFetchService } from '../../services/api-fetch.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subject, switchMap } from 'rxjs';
@@ -22,18 +22,21 @@ export class HeroesBoardComponent implements OnInit {
   constructor(private apiService: ApiFetchService, private router: Router) { }
 
   ngOnInit(): void {
-    try {
-      this.searchSubject.pipe(
-        debounceTime(200),
-        distinctUntilChanged(),
-        switchMap((searchText: string) => this.apiService.searchHeroByName(searchText))
-      ).subscribe((data: any) => {
+    this.searchSubject.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      switchMap((searchText: string) => this.apiService.searchHeroByName(searchText))
+    ).subscribe({
+      next: (data: any) => {
         this.heroes = data.results || [];
-      });
-    } catch (error) {
-      console.error('Error finding heroes: ', error);
-    }
+      },
+      error: (err) => {
+        console.error('Error finding heroes:', err);
+        this.heroes = [];
+      }
+    });
   }
+
 
   filterHeroes(): void {
     if (this.searchTerm.trim()) {

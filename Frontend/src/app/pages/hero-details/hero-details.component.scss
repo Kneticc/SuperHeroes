@@ -1,0 +1,59 @@
+.hero-details-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('/assets/images/brickwall.webp') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate; 
+
+  .hero-details-poster{
+    width: 32%;
+    height: 100%;
+    background: url('/assets/images/poster.png') no-repeat center center fixed;
+    background-size: 35%;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.9;
+    padding-top: 5rem;
+
+    .hero-details-poster-name {
+      font-family: 'VT323', monospace;
+      font-size: 2.8rem;
+      color: #3a2e1c;
+      text-align: center;
+      position: relative;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+    }
+    
+    .hero-details-poster-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .hero-image {
+        width: 50%;
+        filter: sepia(0.8) contrast(0.9) brightness(0.9);
+        mix-blend-mode: multiply;
+        opacity: 0.95;
+        mask-image: linear-gradient(to top, transparent 0%, black 15%, black 85%, transparent 100%),
+        linear-gradient(to left, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-composite: intersect;
+      }
+    }
+  }
+}
+
+
+.hero-details-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(19, 13, 7, 0.753); 
+  mix-blend-mode: multiply; 
+  pointer-events: none;
+  z-index: -1;
+}

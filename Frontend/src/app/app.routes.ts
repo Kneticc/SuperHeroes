@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { HeroesBoardComponent } from './heroes-board/heroes-board.component';
-import { HeroDetailsComponent } from './hero-details/hero-details.component';
+import { HeroesBoardComponent } from './pages/heroes-board/heroes-board.component';
+import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
 
 export const routes: Routes = [
   {
@@ -9,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: ':id',
-    loadComponent: () => import('./hero-details/hero-details.component').then(m => m.HeroDetailsComponent),
+    loadComponent: () => import('./pages/hero-details/hero-details.component').then(m => m.HeroDetailsComponent),
   },
   {
     path: '**',
