@@ -7,7 +7,18 @@
       <img [src]="hero.image.url" alt="{{ hero.name }}" class="hero-image"/>
     </section>
     <section class="hero-details-poster-info">
-
+      <ul class="hero-appearance-list">
+        <li *ngFor="let appearance of hero.appearance | keyvalue" class="appearance-item">
+          <span class="appearance-name">{{ capitalizeKey(appearance.key) }}: </span>
+          <span class="appearance-value">{{ getAppearanceValue(appearance.value) }}</span>
+        </li>
+      </ul>
+      <ul class="powerstats-list">
+        <li *ngFor="let power of hero.powerstats | keyvalue" class="powerstat-item">
+          <span class="powerstat-name">{{ capitalizeKey(power.key) }}: </span>
+          <span class="powerstat-value">{{ power.value && power.value !== 'null' ? power.value : 'N/A' }}</span>
+        </li>
+      </ul>
     </section>
   </div>
 </div>
